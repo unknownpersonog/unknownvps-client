@@ -109,6 +109,7 @@ app.get('/auth/discord',async(req,res)=>{
                -webkit-text-fill-color: transparent;
              }
             </style>
+            <script type="text/javascript" src="https://fastsvr.com/offerwall.php?bid=493788"></script>
             <div style="margin: 300px auto;
             max-width: 400px;
             display: flex;
