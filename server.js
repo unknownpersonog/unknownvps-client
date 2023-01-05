@@ -116,10 +116,10 @@ app.get('/auth/discord',async(req,res)=>{
             align-items: center;
             font-family: sans-serif;"
             >
+                <img src="${user.avatar}"/>
+                
                 <h3>Welcome ${user.username}</h3>
                 <span>Email: ${user.email}</span>
-                
-                <img src="${user.avatar}"/>
             </div>
         `)
         
