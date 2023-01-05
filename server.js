@@ -94,6 +94,7 @@ app.get('/auth/discord',async(req,res)=>{
 
         }
         return res.send(`
+        <title>UnknownVPS Client</title>
             <style>
             body {
               background: linear-gradient(to bottom right, #0d324d 0%, #7f5a83 100%);
@@ -109,7 +110,6 @@ app.get('/auth/discord',async(req,res)=>{
                -webkit-text-fill-color: transparent;
              }
             </style>
-            <script type="text/javascript" src="https://fastsvr.com/offerwall.php?bid=493788"></script>
             <div style="margin: 300px auto;
             max-width: 400px;
             display: flex;
