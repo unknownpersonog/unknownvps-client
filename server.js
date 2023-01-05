@@ -98,6 +98,11 @@ app.get('/auth/discord',async(req,res)=>{
             body {
               background: linear-gradient(to bottom right, #0d324d 0%, #7f5a83 100%);
              }
+             h1 {
+               background: -webkit-linear-gradient(#ffafbd, #ffc3a0);
+               -webkit-background-clip: text;
+               -webkit-text-fill-color: transparent;
+             }
             </style>
             <div style="margin: 300px auto;
             max-width: 400px;
