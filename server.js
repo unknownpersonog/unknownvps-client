@@ -93,6 +93,7 @@ app.get('/auth/discord',async(req,res)=>{
 
         }
         return res.send(`
+         <link rel="stylesheet" href="index.css">
            <nav class="navbar navbar-expand-lg text-white">
     <div class="container-fluid">
     <a class="navbar-brand" href="#" style="color: azure">Unknown VPS</a>
