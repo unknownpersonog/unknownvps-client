@@ -93,24 +93,7 @@ app.get('/auth/discord',async(req,res)=>{
 
         }
         return res.send(`
-        <title>UnknownVPS Client</title>
-            <style>
-            body {
-              background: linear-gradient(to bottom right, #0d324d 0%, #7f5a83 100%);
-             }
-             h3 {
-               background: -webkit-linear-gradient(#ffafbd, #ffc3a0);
-               -webkit-background-clip: text;
-               -webkit-text-fill-color: transparent;
-             }
-             span {
-               background: -webkit-linear-gradient(#ffafbd, #ffc3a0);
-               -webkit-background-clip: text;
-               -webkit-text-fill-color: transparent;
-             }
-            </style>
-            <div>
-   <nav class="navbar navbar-expand-lg text-white">
+           <nav class="navbar navbar-expand-lg text-white">
     <div class="container-fluid">
     <a class="navbar-brand" href="#" style="color: azure">Unknown VPS</a>
     <button style="color: azure" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -146,6 +129,22 @@ app.get('/auth/discord',async(req,res)=>{
     </div>
   </div>
 </nav>
+        <title>UnknownVPS Client</title>
+            <style>
+            body {
+              background: linear-gradient(to bottom right, #0d324d 0%, #7f5a83 100%);
+             }
+             h3 {
+               background: -webkit-linear-gradient(#ffafbd, #ffc3a0);
+               -webkit-background-clip: text;
+               -webkit-text-fill-color: transparent;
+             }
+             span {
+               background: -webkit-linear-gradient(#ffafbd, #ffc3a0);
+               -webkit-background-clip: text;
+               -webkit-text-fill-color: transparent;
+             }
+            </style>
 <div>
                 <img src="${user.avatar}"/>
                 
