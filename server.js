@@ -100,7 +100,6 @@ app.get('/auth/discord',async(req,res)=>{
     />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
        <!--Navigation bar-->
-     <div>
      <nav class="navbar navbar-expand-lg text-white">
     <div class="container-fluid">
     <a class="navbar-brand" href="#" style="color: azure">Unknown VPS</a>
@@ -137,7 +136,6 @@ app.get('/auth/discord',async(req,res)=>{
     </div>
   </div>
 </nav>
-</div>
 <!--end of Navigation bar-->
             <style>
             body {
