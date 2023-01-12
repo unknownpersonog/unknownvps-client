@@ -100,7 +100,8 @@ app.get('/auth/discord',async(req,res)=>{
     />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
        <!--Navigation bar-->
-           <nav class="navbar navbar-expand-lg text-white">
+     <div>
+     <nav class="navbar navbar-expand-lg text-white">
     <div class="container-fluid">
     <a class="navbar-brand" href="#" style="color: azure">Unknown VPS</a>
     <button style="color: azure" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -136,8 +137,8 @@ app.get('/auth/discord',async(req,res)=>{
     </div>
   </div>
 </nav>
+</div>
 <!--end of Navigation bar-->
-
             <style>
             body {
               background: linear-gradient(to bottom right, #0d324d 0%, #7f5a83 100%);
@@ -153,7 +154,7 @@ app.get('/auth/discord',async(req,res)=>{
                -webkit-text-fill-color: transparent;
              }
             </style>
-<div>
+   <div>
                 <img src="${user.avatar}"/>
                 
                 <h3>Welcome ${user.username}</h3>
