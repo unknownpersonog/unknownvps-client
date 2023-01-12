@@ -110,77 +110,43 @@ app.get('/auth/discord',async(req,res)=>{
              }
             </style>
             <div>
-                        <nav class="sidebar sidebar-offcanvas" id="sidebar">
-            <div style="background-color: #212530" class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-             <a style="color: white" class="sidebar-brand brand-logo" href="/dashboard"><%= extra.home.name %></a>
-            </div>
-            <ul class="nav">
-                  <li class="nav-item nav-category">
-                    <span class="nav-link text-white"><h4>Management</h4></span>
-                  </li>
-              <li class="nav-item menu-items">
-                <a class="nav-link" href="../dashboard">
-                  <span class="menu-title">Dashboard</span>
-                </a>
-              </li>
-              <li class="nav-item menu-items">
-                <a class="nav-link" href="../servers">
-                  <span class="menu-title">Your Servers</span>
-                </a>
-              </li>
-                <li class="nav-item menu-items">
-                <a class="nav-link" href="../settings">
-                  <span class="menu-title">Account Settings</span>
-                </a>
-              </li>
-                  <li class="nav-item nav-category">
-                    <span class="nav-link text-white"><h4>Coins & Resources</h4></span>
-                  </li>
-              <li class="nav-item menu-items">
-                <a class="nav-link" href="../store">
-                  <span class="menu-title">Resources Store</span>
-                </a>
-              </li>
-              <li class="nav-item menu-items">
-                <a class="nav-link" href="../afk">
-                  <span class="menu-title">AFK Page</span>
-                </a>
-              </li>
-              <li class="nav-item menu-items">
-                <a class="nav-link" href="../lv">
-                  <span class="menu-title">Linkvertise</span>
-                </a>
-              </li>
-              <li class="nav-item menu-items">
-                <a class="nav-link" href="../j4r">
-                  <span class="menu-title">Join for Rewards</span>
-                </a>
-              </li>
-              <li class="nav-item menu-items">
-                <a class="nav-link" href="../gift">
-                  <span class="menu-title">Gift Coins</span>
-                </a>
-              </li>
-              <li class="nav-item menu-items">
-                <a class="nav-link" href="../redeem">
-                  <span class="menu-title">Redeem Coupon</span>
-                </a>
-              </li>
-                  <li class="nav-item nav-category">
-                    <span class="nav-link text-white"><h4>Miscellaneous</h4></span>
-                  </li>
-                <li class="nav-item menu-items">
-                  <a class="nav-link" href="../panel">
-                    <span class="menu-title">Panel</span>
-                  </a>
-                </li>
-                <li class="nav-item menu-items">
-                  <a class="nav-link" href="../logout">
-                    <span class="menu-title">Logout</span>
-                  </a>
-                </li>
-              </ul>
-              </nav>
+   <nav class="navbar navbar-expand-lg text-white">
+    <div class="container-fluid">
+    <a class="navbar-brand" href="#" style="color: azure">Unknown VPS</a>
+    <button style="color: azure" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#" style="color: azure">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" style="color: azure">Support</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" style="color: azure" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Store
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">VPS</a></li>
+            <li><a class="dropdown-item" href="#">Minecraft Server</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Donate</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://discord.gg/U4fQJXxyDS" style="color: azure" tabindex="-1" aria-disabled="false">Discord</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit" style="color: azure">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+<div>
                 <img src="${user.avatar}"/>
                 
                 <h3>Welcome ${user.username}</h3>
