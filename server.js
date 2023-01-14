@@ -93,14 +93,22 @@ app.get('/auth/discord',async(req,res)=>{
 
         }
         return res.send(`
-        <title>UnknownVPS Client</title>
-        <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-       <!--Navigation bar-->
-     <nav class="navbar navbar-expand-lg text-white">
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="icon" type="image/x-icon" href="Unknown%20VPS_files/Server-ico.png">
+    <script async="" src="Unknown%20VPS_files/googlesyndication_adsbygoogle.js" crossorigin="anonymous"></script>
+<style>
+.fullpage {
+    height: 100%;
+    }
+html, body {
+    height: 100%;
+    background: linear-gradient(to bottom right, #0d324d 0%, #7f5a83 100%);
+}
+</style>
+    </head>
+    <body>
+    <nav class="navbar navbar-expand-lg text-white">
     <div class="container-fluid">
     <a class="navbar-brand" href="#" style="color: azure">Unknown VPS</a>
     <button style="color: azure" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -136,28 +144,23 @@ app.get('/auth/discord',async(req,res)=>{
     </div>
   </div>
 </nav>
-<!--end of Navigation bar-->
-            <style>
-            body {
-              background: linear-gradient(to bottom right, #0d324d 0%, #7f5a83 100%);
-             }
-             h3 {
-               background: -webkit-linear-gradient(#ffafbd, #ffc3a0);
-               -webkit-background-clip: text;
-               -webkit-text-fill-color: transparent;
-             }
-             span {
-               background: -webkit-linear-gradient(#ffafbd, #ffc3a0);
-               -webkit-background-clip: text;
-               -webkit-text-fill-color: transparent;
-             }
-            </style>
-   <div>
-                <img src="${user.avatar}"/>
-                
+    <title>Unknown VPS</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="Unknown%20VPS_files/bootstrap.min.css" rel="stylesheet">
+    <script src="Unknown%20VPS_files/bootstrap.bundle.min.js"></script>
+
+    <div class="container p-5 text-center">
+          <h3 style="color: azure">Login Success</h3>
+                 <img src="${user.avatar}"/>
                 <h3>Welcome ${user.username}</h3>
                 <span>Email: ${user.email}</span>
-            </div>
+
+        </div>
+      </div>
+    </div>
+    </body>
+</html>
         `)
         
     }catch(error){
