@@ -86,7 +86,7 @@ app.get('/login',async(req,res)=>{
             }
         })
         console.log('Data: ',userDataResponse.data)
-        user={
+        module.exports = user={
             username:userDataResponse.data.username,
             email:userDataResponse.data.email,
             avatar:`https://cdn.discordapp.com/avatars/${userDataResponse.data.id}/${userDataResponse.data.avatar}`
