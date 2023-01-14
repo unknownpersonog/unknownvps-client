@@ -92,6 +92,7 @@ app.get('/login',async(req,res)=>{
             avatar:`https://cdn.discordapp.com/avatars/${userDataResponse.data.id}/${userDataResponse.data.avatar}`
 
         }
+        return res.redirect('/dashboard'); 
       }catch(error){
         console.log('Error',error)
         return res.send('Some error occurred! ')
