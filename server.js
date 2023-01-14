@@ -92,7 +92,17 @@ app.get('/login',async(req,res)=>{
             avatar:`https://cdn.discordapp.com/avatars/${userDataResponse.data.id}/${userDataResponse.data.avatar}`
 
         }
-        return res.redirect('/dashboard'); 
+        res.send(`
+        <html>
+       <head>
+          <title>UnknownVPS Logging In....</title>
+          <meta http-equiv = "refresh" content = "3; url = https://www.qries.com" />
+       </head>
+       <body>
+          <p>Redirecting to Dashboard...</p>
+       </body>
+    </html>
+    `)
       }catch(error){
         console.log('Error',error)
         return res.send('Some error occurred! ')
