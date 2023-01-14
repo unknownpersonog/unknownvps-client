@@ -154,15 +154,14 @@ html, body {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   </head>
   <body>
-    <div class="container mt-5 text-center">
-        <div class="col-xs-4 col-md-4">
-          <h3 style="color: azure">Sign Up/Login!</h3>
+    <div class="container p-5 text-center">
+          <h3 style="color: azure">Login Success</h3>
           <p style="color: azure">Sign up to start accessing our services!</p>
           <p style="color: azure">Click here to Sign Up/Sign In</p>
         </div>
       </div>
     </div>
-  </body>
+    </body>
 </html>
         `)
         
