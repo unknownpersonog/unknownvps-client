@@ -93,15 +93,22 @@ app.get('/login',async(req,res)=>{
 
         }
         res.send(`
-        <html>
-       <head>
-          <title>UnknownVPS Logging In....</title>
-          <meta http-equiv = "refresh" content = "3; url = https://client.unknownnodes.ml/dashboard" />
-       </head>
-       <body>
-          <p>Redirecting to Dashboard...</p>
-       </body>
-    </html>
+        <head>
+        <title>UnknownVPS &bullet; Logging In</title>
+        </head>
+        <body style="font-family: 'Whitney-Semibold', sans-serif;">
+        <center>
+          <br><br><br>
+          <h1 style="color: white">Logging you in....</h1>
+          <p style="color: azure">Please relogin if you do not get redirected...</p>
+        </center>
+    <style>
+    html, body {
+      height: 100%;
+      background: linear-gradient(to bottom right, #0d324d 0%, #7f5a83 100%);
+  }
+    </style>
+        </body>
     `)
       }catch(error){
         console.log('Error',error)
@@ -113,9 +120,6 @@ app.get('/login',async(req,res)=>{
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <link rel="icon" type="image/x-icon" href="Unknown%20VPS_files/Server-ico.png">
 <style>
-.fullpage {
-    height: 100%;
-    }
 html, body {
     height: 100%;
     background: linear-gradient(to bottom right, #0d324d 0%, #7f5a83 100%);
@@ -159,7 +163,7 @@ html, body {
     </div>
   </div>
 </nav>
-    <title>Unknown VPS</title>
+    <title>Unknown VPS &bullet; Dashboard</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
