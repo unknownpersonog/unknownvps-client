@@ -92,7 +92,8 @@ app.get('/auth/discord',async(req,res)=>{
             avatar:`https://cdn.discordapp.com/avatars/${userDataResponse.data.id}/${userDataResponse.data.avatar}`
 
         }
-        app.get('/dashboard') ,res.send(`
+        return res.redirect(`/dashboard`)
+        res.send(`
 <html lang="en"><head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <link rel="icon" type="image/x-icon" href="Unknown%20VPS_files/Server-ico.png">
