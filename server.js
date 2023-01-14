@@ -151,11 +151,9 @@ html, body {
 
     <div class="container p-5 text-center">
           <h3 style="color: azure">Login Success</h3>
-          <p style="color: azure">Sign up to start accessing our services!</p>
-          <p style="color: azure">Click here to Sign Up/Sign In</p>
-          <div>
-<a href="https://client.unknownnodes.ml" class="btn btn-primary">Client Area</a>
-            </div>
+                <img src="${user.avatar}"/>
+                <h3>Welcome ${user.username}</h3>
+                <span>Email: ${user.email}</span>
         </div>
       </div>
     </div>
