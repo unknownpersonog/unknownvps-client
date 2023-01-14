@@ -92,6 +92,7 @@ app.get('/dashboard',async(req,res)=>{
             avatar:`https://cdn.discordapp.com/avatars/${userDataResponse.data.id}/${userDataResponse.data.avatar}`
 
         }
+        return res.redirect(`/dashboard`)
         res.send(`
 <html lang="en"><head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
