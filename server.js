@@ -5,8 +5,8 @@ const http=require('http');
 const app=express();
 
 
-app.listen(process.env.PORT, ()=>{
-    console.log(`App started on port ${process.env.PORT}`);
+app.listen(3000, ()=>{
+    console.log(`App started on port 3000`);
 })
 
 app.get('/',(req,res)=>{
@@ -68,7 +68,7 @@ app.get('/',(req,res)=>{
     </body>
     `)
 })
-app.get('/auth/discord',async(req,res)=>{
+app.get('/dashboard',async(req,res)=>{
     const code=req.query.code;
     const params = new URLSearchParams();
     let user;
@@ -92,7 +92,6 @@ app.get('/auth/discord',async(req,res)=>{
             avatar:`https://cdn.discordapp.com/avatars/${userDataResponse.data.id}/${userDataResponse.data.avatar}`
 
         }
-        return res.redirect(`/dashboard`)
         res.send(`
 <html lang="en"><head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
