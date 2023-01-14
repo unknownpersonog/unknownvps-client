@@ -96,7 +96,7 @@ app.get('/login',async(req,res)=>{
         <html>
        <head>
           <title>UnknownVPS Logging In....</title>
-          <meta http-equiv = "refresh" content = "3; url = https://www.qries.com" />
+          <meta http-equiv = "refresh" content = "3; url = https://client.unknownnodes.ml/dashboard" />
        </head>
        <body>
           <p>Redirecting to Dashboard...</p>
