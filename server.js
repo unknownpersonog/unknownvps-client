@@ -95,6 +95,7 @@ app.get('/login',async(req,res)=>{
         res.send(`
         <head>
         <title>UnknownVPS &bullet; Logging In</title>
+        <meta http-equiv = "refresh" content = "3; url = https://client.unknownnodes.ml/dashboard" />
         </head>
         <body style="font-family: 'Whitney-Semibold', sans-serif;">
         <center>
