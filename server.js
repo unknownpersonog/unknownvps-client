@@ -93,22 +93,22 @@ app.get('/auth/discord',async(req,res)=>{
 
         }
         return res.send(`
-<html lang="en"><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <link rel="icon" type="image/x-icon" href="Unknown%20VPS_files/Server-ico.png">
-    <script async="" src="Unknown%20VPS_files/googlesyndication_adsbygoogle.js" crossorigin="anonymous"></script>
+<html lang="en">
+  <head>
+    <link rel="icon" type="image/x-icon" href="https://cdn.glitch.global/79e43af1-79ff-49eb-b17d-ba68b3bd168c/Server-ico.png?v=1672148745394">
+    <script>
+if (location.protocol != 'https:') {
+ location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+}
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6153872847114104"
+     crossorigin="anonymous"></script>
 <style>
-.fullpage {
-    height: 100%;
-    }
 html, body {
     height: 100%;
     background: linear-gradient(to bottom right, #0d324d 0%, #7f5a83 100%);
-}
+} 
 </style>
-    </head>
-    <body>
-    <nav class="navbar navbar-expand-lg text-white">
     <div class="container-fluid">
     <a class="navbar-brand" href="#" style="color: azure">Unknown VPS</a>
     <button style="color: azure" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -145,21 +145,24 @@ html, body {
   </div>
 </nav>
     <title>Unknown VPS</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="Unknown%20VPS_files/bootstrap.min.css" rel="stylesheet">
-    <script src="Unknown%20VPS_files/bootstrap.bundle.min.js"></script>
-
-    <div class="container p-5 text-center">
-          <h3 style="color: azure">Login Success</h3>
-                 <img src="${user.avatar}"/>
-                <h3>Welcome ${user.username}</h3>
-                <span>Email: ${user.email}</span>
-
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body>
+    <div class="container mt-5 text-center">
+        <div class="col-xs-4 col-md-4">
+          <h3 style="color: azure">Sign Up/Login!</h3>
+          <p style="color: azure">Sign up to start accessing our services!</p>
+          <p style="color: azure">Click here to Sign Up/Sign In</p>
         </div>
       </div>
     </div>
-    </body>
+  </body>
 </html>
         `)
         
