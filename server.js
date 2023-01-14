@@ -107,7 +107,6 @@ app.get('/login',async(req,res)=>{
         console.log('Error',error)
         return res.send('Some error occurred! ')
     } 
-  })
     app.get('/dashboard',(req,res)=>{
       res.send(`
 <html lang="en"><head>
@@ -179,3 +178,4 @@ html, body {
         `)   
     }
 )
+  })
