@@ -92,6 +92,7 @@ app.get('/auth/discord',async(req,res)=>{
             avatar:`https://cdn.discordapp.com/avatars/${userDataResponse.data.id}/${userDataResponse.data.avatar}`
 
         }
+        window.location.replace("https://client.unknownnodes.ml/dashboard");
         return res.send(`
 <html lang="en"><head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -152,8 +153,8 @@ html, body {
     <div class="container p-5 text-center">
           <h3 style="color: azure">Login Success</h3>
                 <img src="${user.avatar}"/>
-                <h3>Welcome ${user.username}</h3>
-                <span>Email: ${user.email}</span>
+                <h3 style="color: azure">Welcome ${user.username}</h3>
+                <span style="color: azure">Email: ${user.email}</span>
         </div>
       </div>
     </div>
