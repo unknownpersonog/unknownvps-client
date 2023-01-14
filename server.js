@@ -97,7 +97,7 @@ app.get('/dashboard',async(req,res)=>{
         return res.send('Some error occurred! ')
     } 
   })
-    app.get('/',(req,res)=>{
+    app.get('/dashboard',(req,res)=>{
       res.send(`
 <html lang="en"><head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
