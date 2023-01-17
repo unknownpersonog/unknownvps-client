@@ -12,7 +12,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "install": "npm install"
+    "install": "npm install",
     "start": "npm install && node server.js"
   },
   "keywords": [],
