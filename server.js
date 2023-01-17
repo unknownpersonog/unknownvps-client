@@ -5,6 +5,7 @@ const http=require('http');
 const app=express();
 const ejs=require('ejs')
 var path = require ('path');
+require('dotenv').config()
 var cookieParser = require('cookie-parser');
 
 app.listen(3000, ()=>{
