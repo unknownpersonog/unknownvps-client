@@ -18,8 +18,8 @@ app.get('/login',async(req,res)=>{
     const code=req.query.code;
     const params = new URLSearchParams();
     let user;
-    params.append('client_id', "1058719156691795989");
-    params.append('client_secret', "ancloRjJm_QQ5u1ClsJRakkqBX9qdd9X");
+    params.append('client_id', process.env.CLIENT_ID);
+    params.append('client_secret', process.env.CLIENT_SECRET);
     params.append('grant_type', 'authorization_code');
     params.append('code', code);
     params.append('redirect_uri', "https://client.unknownnodes.ml/login");
