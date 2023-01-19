@@ -64,5 +64,5 @@ app.get('/login/callback',
   });
   app.get('/dashboard', ensureAuthenticated, function(req, res) {
     const avatarURL = `https://cdn.discordapp.com/avatars/${req.user.id}/${req.user.avatar}.png`;    res.render('dashboard', {user: userProfile, avatar: avatarURL});
-    res.render('dashboard', {user: userProfile, avatarURL});
+    res.render('dashboard', {user: userProfile, avatarURL: avatarURL});
         })
