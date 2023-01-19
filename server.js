@@ -29,8 +29,8 @@ let userProfile;
 passport.use(new DiscordStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: 'http://localhost:3000/login/callback',
-    scope: ['identify']
+    callbackURL: 'https://client.unknownnodes.ml/login/callback',
+    scope: ['identify','email','guilds']
   },
   function(accessToken, refreshToken, profile, done) {
     userProfile = profile;
