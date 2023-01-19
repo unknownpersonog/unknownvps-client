@@ -24,21 +24,17 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-let userProfile;
-
 passport.use(new DiscordStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: 'https://client.unknownnodes.ml/login/callback',
+    callbackURL: 'http://localhost:3000/login/callback',
     scope: ['identify','email','guilds']
   },
   function(accessToken, refreshToken, profile, done) {
-    userProfile = profile;
     done(null, profile);
   }
 ));
 
-global.userProfile = userProfile;
 passport.serializeUser(function(user, done) {
     done(null, user);
 });
@@ -63,6 +59,6 @@ app.get('/login/callback',
     res.redirect('/dashboard');
   });
   app.get('/dashboard', ensureAuthenticated, function(req, res) {
-    const avatarURL = `https://cdn.discordapp.com/avatars/${req.user.id}/${req.user.avatar}.png`;    res.render('dashboard', {user: userProfile, avatar: avatarURL});
-    res.render('dashboard', {user: userProfile, avatarURL: avatarURL});
+    const avatarURL = `https://cdn.discordapp.com/avatars/${req.user.id}/${req.user.avatar}.png`;
+    res.render('dashboard', {user: req.user, avatarURL});
         })
