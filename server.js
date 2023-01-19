@@ -1,12 +1,12 @@
 const express=require('express');
 const axios=require('axios');
 const fs=require('fs');
-const http=require('http');
+const session = require('express-session');
 const app=express();
-const ejs=require('ejs')
-var path = require ('path');
+const ejs=require('ejs');
 require('dotenv').config()
-var cookieParser = require('cookie-parser');
+const passport = require('passport');
+const DiscordStrategy = require('passport-discord').Strategy;
 
 app.listen(3000, ()=>{
     console.log(`App started on port 3000`);
@@ -15,38 +15,54 @@ app.set('view engine', 'ejs');
 app.get('/',(req,res)=>{
     res.render('login');
 })
-app.get('/login',async(req,res)=>{
-    const code=req.query.code;
-    const params = new URLSearchParams();
-    let user;
-    params.append('client_id', process.env.CLIENT_ID);
-    params.append('client_secret', process.env.CLIENT_SECRET);
-    params.append('grant_type', 'authorization_code');
-    params.append('code', code);
-    params.append('redirect_uri', "https://client.unknownnodes.ml/login");
-  res.render(`loggingin.ejs`);
-    app.get('/dashboard',async(req,res)=>{
-      try{
-        const response=await axios.post('https://discord.com/api/oauth2/token',params)
-        const { access_token,token_type}=response.data;
-        const userDataResponse=await axios.get('https://discord.com/api/users/@me',{
-            headers:{
-                authorization: `${token_type} ${access_token}`
-            }
-        })
-        console.log('Data: ',userDataResponse.data)
-        module.exports = user={
-            username:userDataResponse.data.username,
-            email:userDataResponse.data.email,
-            id:userDataResponse.data.id,
-            avatarid:userDataResponse.data.avatar,
-            avatar:`https://cdn.discordapp.com/avatars/${userDataResponse.data.id}/${userDataResponse.data.avatar}`
-        }
 
-             }catch(error){
-        console.log('Error',error)
-        return res.send('Some error occurred! ')
-    } 
-        res.render('dashboard', {user: user});
+app.use(session({
+    secret: 'your-secret-key',
+    resave: false,
+    saveUninitialized: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+let userProfile;
+
+passport.use(new DiscordStrategy({
+    clientID: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
+    callbackURL: 'http://localhost:3000/login/callback',
+    scope: ['identify']
+  },
+  function(accessToken, refreshToken, profile, done) {
+    userProfile = profile;
+    done(null, profile);
+  }
+));
+
+global.userProfile = userProfile;
+passport.serializeUser(function(user, done) {
+    done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+    done(null, user);
+});
+
+function ensureAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect('/login');
+}
+
+app.get('/login', passport.authenticate('discord'));
+
+app.get('/login/callback', 
+  passport.authenticate('discord', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/dashboard');
+  });
+  app.get('/dashboard', ensureAuthenticated, function(req, res) {
+    const avatarURL = `https://cdn.discordapp.com/avatars/${req.user.id}/${req.user.avatar}.png`;    res.render('dashboard', {user: userProfile, avatar: avatarURL});
+    res.render('dashboard', {user: userProfile, avatarURL});
         })
-  })
