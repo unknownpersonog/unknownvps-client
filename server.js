@@ -52,42 +52,38 @@ function ensureAuthenticated(req, res, next) {
 
 app.get('/login', passport.authenticate('discord'));
 
-const AWS = require('aws-sdk');
+const mysql = require('mysql2');
 
-// Configure the AWS SDK with your AWS credentials and the region where your DynamoDB table is located
-AWS.config.update({
-    accessKeyId: process.env.ACCESS_KEY_ID,
-    secretAccessKey: process.env.SECRET_ACCESS_KEY,
-    region: process.env.REGION,
-    sessionToken: process.env.SESSION_TOKEN
+const connection = mysql.createConnection({
+    host: 'sql12.freemysqlhosting.net',
+    user: 'sql12592296',
+    password: 'Y6pEGJgbsY',
+    database: 'sql12592296'
 });
 
-// Create a new instance of the DynamoDB client
-const dynamoDb = new AWS.DynamoDB.DocumentClient();
-
-// Add a new user to the DynamoDB table
-const addUser = (userId, username, email) => {
-    const params = {
-        TableName: 'users',
-        Item: {
-            userId: userId,
-            username: username,
-            email: email,
-            coinBalance: 00
-        }
-    };
-
-    return dynamoDb.put(params).promise();
-};
+connection.connect((err) => {
+    if (err) throw err;
+    console.log('Connected to MySQL database');
+});
 
 app.get('/login/callback', 
   passport.authenticate('discord', { failureRedirect: '/login' }),
   function(req, res) {
-    addUser(req.user.id, req.user.username, req.user.email)
+    const sql = `INSERT INTO users (discord_id, username, email, coins) VALUES ('${req.user.id}', '${req.user.username}', '${req.user.email}', 0)`;
+    connection.query(sql, (err, result) => {
+        if (err) throw err;
+        console.log('User information inserted into database');
+    });
     // Successful authentication, redirect home.
     res.redirect('/dashboard');
   });
   app.get('/dashboard', ensureAuthenticated, function(req, res) {
     const avatarURL = `https://cdn.discordapp.com/avatars/${req.user.id}/${req.user.avatar}.png`;
-    res.render('dashboard', {user: req.user, avatarURL});
+    connection.query(`SELECT coins FROM users WHERE discord_id = ${req.user.id}`, (err, results) => {
+        if(err) {
+          console.log(err);
+          return res.send('An error occurred');
+        }
+    res.render('dashboard', {user: req.user, avatarURL, coins: results[0].coins});
         })
+    });
