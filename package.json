@@ -4,6 +4,7 @@
   "description": "Client area for UnknownVPS",
   "main": "server.js",
   "dependencies": {
+    "aws-sdk": "^2.1299.0",
     "axios": "^1.2.2",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.0.3",

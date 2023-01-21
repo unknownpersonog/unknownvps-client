@@ -27,7 +27,7 @@ app.use(passport.session());
 passport.use(new DiscordStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: 'https://client.unknownnodes.ml/login/callback',
+    callbackURL: 'http://localhost:3000/login/callback',
     scope: ['identify','email','guilds']
   },
   function(accessToken, refreshToken, profile, done) {
@@ -52,9 +52,38 @@ function ensureAuthenticated(req, res, next) {
 
 app.get('/login', passport.authenticate('discord'));
 
+const AWS = require('aws-sdk');
+
+// Configure the AWS SDK with your AWS credentials and the region where your DynamoDB table is located
+AWS.config.update({
+    accessKeyId: process.env.ACCESS_KEY_ID,
+    secretAccessKey: process.env.SECRET_ACCESS_KEY,
+    region: process.env.REGION,
+    sessionToken: process.env.SESSION_TOKEN
+});
+
+// Create a new instance of the DynamoDB client
+const dynamoDb = new AWS.DynamoDB.DocumentClient();
+
+// Add a new user to the DynamoDB table
+const addUser = (userId, username, email) => {
+    const params = {
+        TableName: 'users',
+        Item: {
+            userId: userId,
+            username: username,
+            email: email,
+            coinBalance: 00
+        }
+    };
+
+    return dynamoDb.put(params).promise();
+};
+
 app.get('/login/callback', 
   passport.authenticate('discord', { failureRedirect: '/login' }),
   function(req, res) {
+    addUser(req.user.id, req.user.username, req.user.email)
     // Successful authentication, redirect home.
     res.redirect('/dashboard');
   });
