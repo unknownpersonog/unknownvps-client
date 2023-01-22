@@ -66,7 +66,6 @@ connection.connect((err) => {
     console.log('Connected to MySQL database');
 });
 
-
 // Function to check if user already exists in database
 function checkUserExists(userId, callback) {
   connection.query("SELECT * FROM users WHERE discord_id = ?", [userId], function (err, result) {
@@ -108,3 +107,9 @@ app.get('/login/callback',
     res.render('dashboard', {user: req.user, avatarURL, coins: results[0].coins});
         })
     });
+    app.get('/logout', function(req, res, next){
+        req.logout(function(err) {
+          if (err) { return next(err); }
+          res.redirect('/');
+        });
+      });
