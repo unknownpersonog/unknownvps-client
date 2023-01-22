@@ -55,10 +55,10 @@ app.get('/login', passport.authenticate('discord'));
 const mysql = require('mysql2');
 
 const connection = mysql.createConnection({
-    host: 'sql12.freemysqlhosting.net',
-    user: 'sql12592296',
-    password: 'Y6pEGJgbsY',
-    database: 'sql12592296'
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME
 });
 
 connection.connect((err) => {
