@@ -1,4 +1,12 @@
 <nav class="navbar navbar-expand-lg text-white">
+  <style>
+    #logout-button {
+  border: 1px solid black;
+}
+#logout-button:hover {
+  border: 1px solid red;
+}
+  </style>
   <div class="container-fluid">
   <a class="navbar-brand" href="#" style="color: azure">Unknown VPS</a>
   <button style="color: azure" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,7 +39,10 @@
     <li class="nav-item">
       <a class="nav-link" href="store" style="color: azure">You have <%= coins %> coins currently </a>
     </li>
-    </ul>
+    <a href="logout">
+    <button class="btn btn-outline-danger" href="logout" style="color: azure">Log Out</button>
+    </a>
+  </ul>
   </div>
 </div>
 </nav>

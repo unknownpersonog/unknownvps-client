@@ -55,10 +55,10 @@ app.get('/login', passport.authenticate('discord'));
 const mysql = require('mysql2');
 
 const connection = mysql.createConnection({
-    host: 'db4free.net',
-    user: 'unknownvps',
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
     password: process.env.DB_PASS,
-    database: 'unknownvps'
+    database: process.env.DB_NAME
 });
 
 connection.connect((err) => {
@@ -107,3 +107,9 @@ app.get('/login/callback',
     res.render('dashboard', {user: req.user, avatarURL, coins: results[0].coins});
         })
     });
+    app.get('/logout', function(req, res, next){
+        req.logout(function(err) {
+          if (err) { return next(err); }
+          res.redirect('/');
+        });
+      });
