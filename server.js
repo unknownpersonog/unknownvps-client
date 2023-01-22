@@ -55,17 +55,16 @@ app.get('/login', passport.authenticate('discord'));
 const mysql = require('mysql2');
 
 const connection = mysql.createConnection({
-    host: 'sql12.freemysqlhosting.net',
-    user: 'sql12592296',
-    password: 'Y6pEGJgbsY',
-    database: 'sql12592296'
+    host: 'db4free.net',
+    user: 'unknownvps',
+    password: process.env.DB_PASS,
+    database: 'unknownvps'
 });
 
 connection.connect((err) => {
     if (err) throw err;
     console.log('Connected to MySQL database');
 });
-
 
 // Function to check if user already exists in database
 function checkUserExists(userId, callback) {
