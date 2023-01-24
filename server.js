@@ -8,9 +8,6 @@ require('dotenv').config()
 const passport = require('passport');
 const DiscordStrategy = require('passport-discord').Strategy;
 
-app.listen(3000, ()=>{
-    console.log(`App started on port 3000`);
-})
 app.set('view engine', 'ejs');
 app.get('/',(req,res)=>{
     res.render('login');
@@ -114,3 +111,7 @@ app.get('/login/callback',
           res.redirect('/');
         });
       });
+app.listen(3000, ()=>{
+  console.log(`App started on port 3000`);
+})
+      
