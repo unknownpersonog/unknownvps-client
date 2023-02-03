@@ -1,13 +1,20 @@
+<!DOCTYPE html>
 <html lang="en"><head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <link rel="icon" type="image/x-icon" href="https://cdn.glitch.global/79e43af1-79ff-49eb-b17d-ba68b3bd168c/Server-ico.png?v=1672148745394">
 <style>
 html, body {
-    height: 100%;
     background: linear-gradient(90deg, rgba(27,27,47,1) 35%, rgba(60,59,63,1) 100%);
-};
-img.avatar {
-    object-position: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+}
+#footer {
+    position: relative;
+  bottom: 0;
+  width: 100%;
+  margin-top: auto;
 }
 </style>
     <title>Unknown VPS &bullet; Dashboard</title>
@@ -21,13 +28,14 @@ img.avatar {
     <body>
         <%- include('./components/nav') %>
          <div class="container p-5 text-center">
-          <h3 class="text-2xl" style="color: azure">Login Success</h3>
-                      <img src="<%= avatarURL %>" class="mx-auto"/>
-                    <h3 class="text-xl" style="color: azure"> <%= user.username %> </h3>
-                    <span style="color: azure">Email: <%= user.email %> </span>
+          <h3 class="text-2xl" style="color: azure">Welcome <%= user.username %>!</h3>
+          <span class="text-xl" style="color: azure">What would you like to do today?</span> 
         </div>
         <div>
             <%- include('./components/slots') %>
         </div>
+        <div id="footer" class="flex flex-col">
+        <%- include('./components/footer') %>
+    </div>
     </body>
 </html> 
