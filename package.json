@@ -4,15 +4,11 @@
   "description": "Client area for UnknownVPS",
   "main": "server.js",
   "dependencies": {
-    "aws-sdk": "^2.1299.0",
-    "axios": "^1.2.2",
-    "cookie-parser": "^1.4.6",
     "dotenv": "^16.0.3",
     "ejs": "^3.1.8",
     "express": "^4.18.2",
     "express-session": "^1.17.3",
-    "fs": "^0.0.1-security",
-    "mysql2": "^3.0.1",
+    "mongodb-legacy": "^4.0.2",
     "passport": "^0.6.0",
     "passport-discord": "^0.1.4"
   },
@@ -33,6 +29,5 @@
   },
   "homepage": "https://github.com/unknownpersonog/unknownvps-client#readme",
   "devDependencies": {
-    "http": "^0.0.1-security"
   }
 }
