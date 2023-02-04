@@ -3,6 +3,12 @@
    width: 24px;
    height: 24px
   }
+
+  .sidebarico32 {
+   width: 32px;
+   height: 32px
+  }
+
   .sidebarico {
    width: 16px;
    height: 16px
@@ -14,7 +20,7 @@
       <ul class="flex items-center space-x-4 text-sm font-semibold">
         <li>
           <a href="/dashboard" class="px-2 xl:px-4 py-2 text-gray-100 rounded-md hover:bg-gray-200 hover:text-blue-600 flex items-center">
-            <img src="https://cdn-icons-png.flaticon.com/512/610/610106.png" class="sidebarico mr-2">
+            <img src="assets/dash.png" class="sidebarico mr-2">
             Home
           </a>
         </li>
@@ -22,40 +28,40 @@
       <li class="relative" x-data="{ open: false }">
             <a x-on:click="open = !open" x-on:click.outside="open = false" href="#"
                 class="px-2 xl:px-4 py-2 text-gray-100 rounded-md hover:bg-gray-200 flex gap-2 items-center">
-                <img src="https://cdn-icons-png.flaticon.com/512/1490/1490853.png" class="w-4 h-4">Coins & Resources
-                <img src="https://cdn-icons-png.flaticon.com/512/3298/3298615.png" class="sidebarico"/></svg> </a>
+                <img src="assets/coin.png" class="sidebarico">Coins & Resources
+                <img src="assets/downarrow.png" class="sidebarico"/></img> </a>
             <ul x-cloak x-show="open" x-transition
                 class="absolute top-10 left-0 bg-white p-4 rounded-md shadow overflow-hidden w-64">
                 <li>
                     <a href="/earn"
                         class="p-4 block text-sm text-gray-600 rounded flex items-center gap-2 hover:bg-gray-100">
-                        <img class="sidebarico" src="https://cdn-icons-png.flaticon.com/512/5501/5501360.png"/>
+                        <img class="sidebarico" src="assets/earn.png"/>
                         Earn Coins
                     </a>
                 </li>
                 <li>
                     <a href="/store"
                         class="p-4 block text-sm text-gray-600 rounded flex items-center gap-2 hover:bg-gray-100">
-                        <img class="sidebarico" src="https://cdn-icons-png.flaticon.com/512/3523/3523887.png"/>
+                        <img class="sidebarico" src="assets/store.png"/>
                         Resources Store
                     </a>
                 </li>
             </ul>
         <li>
           <a target="_blank" rel="noopener noreferrer" href="https://discord.gg/U4fQJXxyDS" class="px-2 xl:px-4 py-2 text-gray-100 rounded-md hover:bg-gray-200 flex items-center">
-            <img src="https://cdn-icons-png.flaticon.com/512/870/870175.png" class="sidebarico mr-2">
+            <img src="assets/support.png" class="sidebarico mr-2">
             Support
           </a>
         </li>
         <li>
           <a href="https://docs.unknownnodes.ml/" class="px-2 xl:px-4 py-2 text-gray-100 rounded-md hover:bg-gray-200 flex items-center">
-            <img src="https://cdn-icons-png.flaticon.com/512/1356/1356479.png" class="sidebarico mr-2">
+            <img src="assets/docs.png" class="sidebarico mr-2">
             Docs
           </a>
           </li>
           <li>
             <a class="px-2 xl:px-4 py-2 text-gray-100 rounded-md hover:bg-gray-200 flex items-center">
-              <img src="https://cdn-icons-png.flaticon.com/512/2822/2822360.png" class="sidebarico mr-2">
+              <img src="assets/bagofcoins.png" class="sidebarico mr-2">
               <%= coins %> coins
             </a>
             </li>
@@ -69,37 +75,27 @@
           </li>
           <li>
             <a href="/logout" class="px-2 xl:px-4 py-2 text-red-600 rounded-md hover:bg-red-600 hover:text-gray-100 flex items-center">
-              <img src="https://cdn-icons-png.flaticon.com/512/4400/4400828.png" class="sidebarico24 mr-2">
+              <img src="assets/logout.png" class="sidebarico24 mr-2">
             </a>
             </li>
       </ul>
   </div>
   <div x-data="{ open: false }" class="lg:hidden relative flex justify-between w-full">
-      <a href="#" class="flex items-start gap-2 group">
-          <div class="bg-gray-200 text-gray-800 font-medium p-3 rounded-md group-hover:bg-gray-300">
-              UnknownVPS
-          </div>
+      <a class="font-semibold px-2 xl:px-4 py-2 text-gray-100 rounded-md hover:bg-gray-200 flex items-center">
+        UnknownVPS
       </a>
-      <a href="#" class="flex items-start gap-2 group">
-          <div class="bg-gray-200 text-gray-800 font-medium p-3 rounded-md group-hover:bg-gray-300">
-            <%= coins %> coins
-          </div>
-      </a>
+        <a class="font-semibold px-2 xl:px-4 py-2 text-gray-100 rounded-md hover:bg-gray-200 flex items-center">
+          <img src="assets/bagofcoins.png" class="sidebarico mr-2">
+          <%= coins %> coins
+        </a>
       <button x-on:click="open = !open" type="button" class="bg-gray-200 p-3 rounded-md">
-          <svg x-show="!open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-              stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
-          </svg>
-          <svg x-show="open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-              stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
+        <img src="assets/menu-mobile.png" class="sidebarico24"/>
       </button>
       <div x-show="open" x-transition class="absolute top-14 left-0 right-0 w-full bg-white rounded-md border">
           <ul class="p-4">
             <li>
                 <a href="/dashboard" class="px-2 xl:px-4 py-2 text-gray-600 rounded-md hover:bg-gray-200 hover:text-blue-600 flex items-center">
-                  <img src="https://cdn-icons-png.flaticon.com/512/610/610106.png" class="sidebarico mr-2">
+                  <img src="assets/dash.png" class="sidebarico mr-2">
                   Home
                 </a>
               </li>
@@ -107,37 +103,43 @@
             <li class="relative" x-data="{ open: false }">
                 <a x-on:click="open = !open" x-on:click.outside="open = false" href="#"
                     class="px-2 xl:px-4 py-2 text-gray-600 rounded-md hover:bg-gray-200 flex gap-2 items-center">
-                    <img src="https://cdn-icons-png.flaticon.com/512/1490/1490853.png" class="w-4 h-4">Coins & Resources
-                    <img src="https://cdn-icons-png.flaticon.com/512/3298/3298615.png" class="sidebarico"/></svg> </a>
+                    <img src="assets/coin.png" class="sidebarico">Coins & Resources
+                    <img src="assets/downarrow.png" class="sidebarico"/></svg> </a>
                 <ul x-cloak x-show="open" x-transition
                     class="absolute top-10 left-0 bg-white p-4 rounded-md shadow overflow-hidden w-64">
                     <li>
-                        <a href="/comingsoon"
+                        <a href="/earn"
                             class="p-4 block text-sm text-gray-600 rounded flex items-center gap-2 hover:bg-gray-100">
-                            <img class="sidebarico" src="https://cdn-icons-png.flaticon.com/512/6695/6695110.png"/>
-                            AFK Page
+                            <img class="sidebarico" src="assets/earn.png"/>
+                            Earn
                         </a>
                     </li>
                     <li>
                         <a href="/store"
                             class="p-4 block text-sm text-gray-600 rounded flex items-center gap-2 hover:bg-gray-100">
-                            <img class="sidebarico" src="https://cdn-icons-png.flaticon.com/512/3523/3523887.png"/>
+                            <img class="sidebarico" src="assets/store.png"/>
                             Resources Store
                         </a>
                     </li>
                 </ul>          
                 <li>
                     <a href="/support" class="px-2 xl:px-4 py-2 text-gray-600 rounded-md hover:bg-gray-200 flex items-center">
-                      <img src="https://cdn-icons-png.flaticon.com/512/870/870175.png" class="sidebarico mr-2">
+                      <img src="assets/support.png" class="sidebarico mr-2">
                       Support
                     </a>
                   </li>              <li class="relative" x-data="{ open: false }">
                     <li>
                     <a href="https://docs.unknownnodes.ml/" class="px-2 xl:px-4 py-2 text-gray-600 rounded-md hover:bg-gray-200 flex items-center">
-                 <img src="https://cdn-icons-png.flaticon.com/512/1356/1356479.png" class="sidebarico mr-2">
+                 <img src="assets/docs.png" class="sidebarico mr-2">
                         Docs
                     </a>
                 </li>
+                <li>
+                  <a href="/logout" class="px-2 xl:px-4 py-2 text-gray-600 rounded-md hover:bg-gray-200 flex items-center">
+               <img src="assets/logout.png" class="sidebarico mr-2">
+                      Log Out
+                  </a>
+              </li>
           </ul>
 
       </div>
