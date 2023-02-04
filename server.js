@@ -5,11 +5,13 @@ const ejs = require("ejs");
 require("dotenv").config();
 const passport = require("passport");
 const DiscordStrategy = require("passport-discord").Strategy;
-
+const path = require("path")
 app.set("view engine", "ejs");
 app.get("/", (req, res) => {
   res.render("login");
 });
+
+app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
 app.use(
   session({
