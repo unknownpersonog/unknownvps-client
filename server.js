@@ -89,6 +89,10 @@ MongoClient.connect(uri, { useNewUrlParser: true }, (err, client) => {
               username: req.user.username,
               email: req.user.email,
               coins: 0,
+              ram: 0,
+              cpu: 0,
+              disk: 0,
+              slots: 0
             },
             (err, result) => {
               if (err) throw err;
@@ -115,6 +119,10 @@ MongoClient.connect(uri, { useNewUrlParser: true }, (err, client) => {
           user: req.user,
           avatarURL,
           coins: result.coins,
+          ram: result.ram,
+          cpu: result.cpu,
+          disk: result.disk,
+          vpsno: result.vpsno
         });
       });
   });

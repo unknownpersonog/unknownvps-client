@@ -8,12 +8,16 @@ UnknownVPS is a project run by UnknownGamer & associates to give out free vpses 
 
 
 ## What's in this project?
-1] views -> Contains the HTMLs for the webpages.
+1] public -> Contains a stylesheet not being used but stored for future.
+ 
+2] src -> Does not contain needed data and stored for future.
 
-2] LICENSE -> Permitted use of this repo.
+3] views -> Contains the HTMLs for the webpages.
 
-3] package.json -> Node.js packages file.
+4] LICENSE -> Permitted use of this repo.
 
-4] README.md -> This file.
+5] package.json -> Node.js packages file.
 
-5] server.js -> The main server
+6] README.md -> This file.
+
+7] server.js -> The main server
