@@ -12,6 +12,7 @@ app.get("/", (req, res) => {
 });
 
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
+app.use('/views', express.static(path.join(__dirname, 'views')));
 
 app.use(
   session({
@@ -168,7 +169,10 @@ MongoClient.connect(uri, { useNewUrlParser: true }, (err, client) => {
         });
       });
   });
-  
+  app.get("/ads.txt", function (req, res) {
+  res.sendFile('views/ads.txt', { root: __dirname });
+  })
+
   app.listen(3000, () => {
     console.log(`App started on port 3000`);
   });
