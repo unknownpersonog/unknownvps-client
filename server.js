@@ -73,7 +73,7 @@ MongoClient.connect(uri, {
         res.render("login");
         }
     });
-    
+
     app.get(
         "/login/callback",
         passport.authenticate("discord", {
@@ -241,7 +241,7 @@ MongoClient.connect(uri, {
     }));
     app.use(bodyParser.json());
 
-    app.post('/createProject', (req, res) => {
+    app.post('/createProject', ensureAuthenticated, (req, res) => {
         const name = req.body.inputProjectName1;
         const category = req.body.inputCategory1;
         if (!name || !category) {
