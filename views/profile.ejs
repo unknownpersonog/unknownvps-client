@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('components/head.ejs') %> 
+    <body class="g-sidenav-show ">
+      <%- include('components/sidebar.ejs') %>
+      <%- include('components/nav.ejs') %> 
+      <div class="container-fluid mb-auto">
+        <div class="col-lg-5 my-4 mx-auto">
+            <div class="card" style="background-color: #303030">
+              <div class="card-header pb-0 p-3" style="background-color: #303030">
+                <h6 class="mb-0 text-blue-400">Your Info</h6>
+              </div>
+              <div class="card-body p-3">
+                <ul class="list-group">
+                  <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg" style="background-color: #303030">
+                    <div class="d-flex align-items-center">
+                      <div class="icon-sm me-3 bg-transparent shadow text-center">
+                        <img src="/assets/png/email.png">
+                      </div>
+                      <div class="d-flex flex-column">
+                        <h6 class="mb-1 text-sm text-gray-500">Email: </h6>
+                        <span class="text-md text-bold text-gray-300 rounded-md shadow-lg"><%= user.email %></span>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg" style="background-color: #303030">
+                    <div class="d-flex align-items-center">
+                      <div class="icon-sm me-3 bg-transparent shadow text-center">
+                        <img src="/assets/png/name.png">
+                      </div>
+                      <div class="d-flex flex-column">
+                        <h6 class="mb-1 text-sm text-gray-500">Name</h6>
+                        <span class="text-md text-bold text-gray-300 rounded-md shadow-lg"><%= user.username %>#<%= user.discriminator %></span>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg" style="background-color: #303030">
+                    <div class="d-flex align-items-center">
+                      <div class="icon-sm me-3 bg-transparent shadow text-center">
+                        <img src="/assets/png/money.png">
+                      </div>
+                      <div class="d-flex flex-column">
+                        <h6 class="mb-1 text-sm text-gray-500">Coins</h6>
+                        <span class="text-md text-bold shadow-lg rounded-md text-gray-300">You have, <span class="font-weight-bold"><%= coins %> Coins</span>
+                        </span>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="mx-auto">
+            <script type="text/javascript">
+              atOptions = {
+                'key' : '4ccfcae4bf2a9c42d41d0922dc4e1540',
+                'format' : 'iframe',
+                'height' : 50,
+                'width' : 320,
+                'params' : {}
+              };
+              document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://floatingfolly.com/4ccfcae4bf2a9c42d41d0922dc4e1540/invoke.js"></scr' + 'ipt>');
+            </script>
+            </div>
+            <div class="my-3 mx-auto">
+              <script type="text/javascript">
+                atOptions = {
+                  'key' : '4ccfcae4bf2a9c42d41d0922dc4e1540',
+                  'format' : 'iframe',
+                  'height' : 50,
+                  'width' : 320,
+                  'params' : {}
+                };
+                document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://floatingfolly.com/4ccfcae4bf2a9c42d41d0922dc4e1540/invoke.js"></scr' + 'ipt>');
+              </script>
+            </div>
+            <div class="my-3 mx-auto">
+              <script type="text/javascript">
+                atOptions = {
+                  'key' : '4ccfcae4bf2a9c42d41d0922dc4e1540',
+                  'format' : 'iframe',
+                  'height' : 50,
+                  'width' : 320,
+                  'params' : {}
+                };
+                document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://floatingfolly.com/4ccfcae4bf2a9c42d41d0922dc4e1540/invoke.js"></scr' + 'ipt>');
+              </script>
+            </div>
+            <div class="my-3 mx-auto">
+              <script type="text/javascript">
+                atOptions = {
+                  'key' : '4ccfcae4bf2a9c42d41d0922dc4e1540',
+                  'format' : 'iframe',
+                  'height' : 50,
+                  'width' : 320,
+                  'params' : {}
+                };
+                document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://floatingfolly.com/4ccfcae4bf2a9c42d41d0922dc4e1540/invoke.js"></scr' + 'ipt>');
+              </script>
+            </div>
+        </div>
+        </div>
+        <div id="footer" class="flex flex-col">
+            <%- include('./components/footer') %>
+        </div>
+        <script src="./assets/js/argon-dashboard.min.js"></script>
+    </body>
+</html>

@@ -1,147 +1,65 @@
-<style>
-  .sidebarico24 {
-   width: 24px;
-   height: 24px
-  }
-
-  .sidebarico32 {
-   width: 32px;
-   height: 32px
-  }
-
-  .sidebarico {
-   width: 16px;
-   height: 16px
-  }
-  </style>
-<nav class="p-4 md:py-8 xl:px-0 md:container md:mx-w-6xl md:mx-auto">
-  <div class="hidden lg:flex lg:justify-between lg:items-center">
-
-      <ul class="flex items-center space-x-4 text-sm font-semibold">
-        <li>
-          <a href="/dashboard" class="px-2 xl:px-4 py-2 text-gray-100 rounded-md hover:bg-gray-200 hover:text-blue-600 flex items-center">
-            <img src="assets/dash.png" class="sidebarico mr-2">
-            Home
-          </a>
-        </li>
-      </li>          
-      <li class="relative" x-data="{ open: false }">
-            <a x-on:click="open = !open" x-on:click.outside="open = false" href="#"
-                class="px-2 xl:px-4 py-2 text-gray-100 rounded-md hover:bg-gray-200 flex gap-2 items-center">
-                <img src="assets/coin.png" class="sidebarico">Coins & Resources
-                <img src="assets/downarrow.png" class="sidebarico"/></img> </a>
-            <ul x-cloak x-show="open" x-transition
-                class="absolute top-10 left-0 bg-white p-4 rounded-md shadow overflow-hidden w-64">
-                <li>
-                    <a href="/earn"
-                        class="p-4 block text-sm text-gray-600 rounded flex items-center gap-2 hover:bg-gray-100">
-                        <img class="sidebarico" src="assets/earn.png"/>
-                        Earn Coins
-                    </a>
-                </li>
-                <li>
-                    <a href="/store"
-                        class="p-4 block text-sm text-gray-600 rounded flex items-center gap-2 hover:bg-gray-100">
-                        <img class="sidebarico" src="assets/store.png"/>
-                        Resources Store
-                    </a>
-                </li>
-            </ul>
-        <li>
-          <a target="_blank" rel="noopener noreferrer" href="https://discord.gg/U4fQJXxyDS" class="px-2 xl:px-4 py-2 text-gray-100 rounded-md hover:bg-gray-200 flex items-center">
-            <img src="assets/support.png" class="sidebarico mr-2">
-            Support
-          </a>
-        </li>
-        <li>
-          <a href="https://docs.unknownnodes.ml/" class="px-2 xl:px-4 py-2 text-gray-100 rounded-md hover:bg-gray-200 flex items-center">
-            <img src="assets/docs.png" class="sidebarico mr-2">
-            Docs
-          </a>
-          </li>
-          <li>
-            <a class="px-2 xl:px-4 py-2 text-gray-100 rounded-md hover:bg-gray-200 flex items-center">
-              <img src="assets/bagofcoins.png" class="sidebarico mr-2">
-              <%= coins %> coins
-            </a>
+    <!-- Navbar -->
+    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
+      <div class="container-fluid py-1 px-3">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+            <li class="breadcrumb-item text-sm">
+              <a class="opacity-5 text-white" href="javascript:;">UnknownVPS</a>
             </li>
-      </ul>
-      <ul class="flex items-center gap-6">
-          <li>
-              <a href="#" class="px-2 xl:px-4 py-2 text-gray-100 rounded-md hover:bg-gray-200 flex items-center">
-                <img src="<%= avatarURL %>" class="rounded-lg sidebarico24 mr-2"/>  
-                <%= user.username %>#<%= user.discriminator %>
+            <li class="breadcrumb-item text-sm text-white active" aria-current="page">Client</li>
+          </ol>
+          <h6 class="font-weight-bolder text-white mb-0"><%= pageName %></h6>
+        </nav>
+        
+        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+          <div class="ms-md-auto pe-md-3 d-flex align-items-center"></div>
+          <ul class="navbar-nav justify-content-end">
+            <li class="nav-item d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-white font-weight-bold px-0">
+                <img src="/assets/png/coin.png" class="sidebarico">
+                <span class="d-inline d-sm-none"><%= coins %> Coins</span>
+                <span class="d-sm-inline d-none"><%= coins %>  Coins</span>
               </a>
-          </li>
-          <li>
-            <a href="/logout" class="px-2 xl:px-4 py-2 text-red-600 rounded-md hover:bg-red-600 hover:text-gray-100 flex items-center">
-              <img src="assets/logout.png" class="sidebarico24 mr-2">
-            </a>
             </li>
-      </ul>
-  </div>
-  <div x-data="{ open: false }" class="lg:hidden relative flex justify-between w-full">
-      <a class="font-semibold px-2 xl:px-4 py-2 text-gray-100 rounded-md hover:bg-gray-200 flex items-center">
-        UnknownVPS
-      </a>
-        <a class="font-semibold px-2 xl:px-4 py-2 text-gray-100 rounded-md hover:bg-gray-200 flex items-center">
-          <img src="assets/bagofcoins.png" class="sidebarico mr-2">
-          <%= coins %> coins
-        </a>
-      <button x-on:click="open = !open" type="button" class="bg-gray-200 p-3 rounded-md">
-        <img src="assets/menu-mobile.png" class="sidebarico24"/>
-      </button>
-      <div x-show="open" x-transition class="absolute top-14 left-0 right-0 w-full bg-white rounded-md border">
-          <ul class="p-4">
-            <li>
-                <a href="/dashboard" class="px-2 xl:px-4 py-2 text-gray-600 rounded-md hover:bg-gray-200 hover:text-blue-600 flex items-center">
-                  <img src="assets/dash.png" class="sidebarico mr-2">
-                  Home
-                </a>
-              </li>
-            </li>    
-            <li class="relative" x-data="{ open: false }">
-                <a x-on:click="open = !open" x-on:click.outside="open = false" href="#"
-                    class="px-2 xl:px-4 py-2 text-gray-600 rounded-md hover:bg-gray-200 flex gap-2 items-center">
-                    <img src="assets/coin.png" class="sidebarico">Coins & Resources
-                    <img src="assets/downarrow.png" class="sidebarico"/></svg> </a>
-                <ul x-cloak x-show="open" x-transition
-                    class="absolute top-10 left-0 bg-white p-4 rounded-md shadow overflow-hidden w-64">
-                    <li>
-                        <a href="/earn"
-                            class="p-4 block text-sm text-gray-600 rounded flex items-center gap-2 hover:bg-gray-100">
-                            <img class="sidebarico" src="assets/earn.png"/>
-                            Earn
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/store"
-                            class="p-4 block text-sm text-gray-600 rounded flex items-center gap-2 hover:bg-gray-100">
-                            <img class="sidebarico" src="assets/store.png"/>
-                            Resources Store
-                        </a>
-                    </li>
-                </ul>          
-                <li>
-                    <a href="/support" class="px-2 xl:px-4 py-2 text-gray-600 rounded-md hover:bg-gray-200 flex items-center">
-                      <img src="assets/support.png" class="sidebarico mr-2">
-                      Support
-                    </a>
-                  </li>              <li class="relative" x-data="{ open: false }">
-                    <li>
-                    <a href="https://docs.unknownnodes.ml/" class="px-2 xl:px-4 py-2 text-gray-600 rounded-md hover:bg-gray-200 flex items-center">
-                 <img src="assets/docs.png" class="sidebarico mr-2">
-                        Docs
-                    </a>
-                </li>
-                <li>
-                  <a href="/logout" class="px-2 xl:px-4 py-2 text-gray-600 rounded-md hover:bg-gray-200 flex items-center">
-               <img src="assets/logout.png" class="sidebarico mr-2">
-                      Log Out
-                  </a>
-              </li>
-          </ul>
-
+            <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
+                <div class="sidenav-toggler-inner">
+                  <i class="sidenav-toggler-line bg-white"></i>
+                  <i class="sidenav-toggler-line bg-white"></i>
+                  <i class="sidenav-toggler-line bg-white"></i>
+                </div>
+              </a>
+            </li>
+            <li class="nav-item align-items-center pt-3">
+              <div class="btn-group">
+                <button type="button" class="btn rounded-md bg-transparent" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img src="<%= avatarURL %>" class="sidebarico24 rounded-md">
+                </button>
+                <style>
+                  .width-box {
+                    min-width: 200px;
+                    max-width: 400px;
+                  }
+                </style>
+                <ul class="dropdown-menu dropdown-menu-end mt-3 width-box bg-gray-700">
+                  <li>
+                    <a class="dropdown-item btn-danger text-gray-300 rounded-md" href="/logout">Log Out</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item text-gray-300 btn-primary rounded-md" href="#">Account Settings</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item text-gray-300 btn-primary rounded-md" href="#">This button is not here</a>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li>
+                    <a class="dropdown-item text-gray-300 btn-success rounded-md">Welcome <%= user.username %>#<%= user.discriminator %> </a>
+                  </li>
+                </ul>
+              </div>
+        </div>
       </div>
-  </div>
-</nav>
+    </nav>
+    <!-- End Navbar -->
