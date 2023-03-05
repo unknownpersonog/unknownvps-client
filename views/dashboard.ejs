@@ -8,8 +8,23 @@
       <div class="container-fluid mb-auto">
               <div>
         <% if (req.query.success === 'projectsuccess') { %>
-        <div class="alert bg-success ">
+        <div class="alert" style="background-color:#5eff53;">
           <span class="text-gray-800">Project Created Successfully</span>
+      </div>
+      <% } %>
+      <% if (req.query.success === 'vpssuccess') { %>
+        <div class="alert" style="background-color:#5eff53;">
+          <span class="text-gray-800">VPS Created Successfully</span>
+      </div>
+      <% } %>
+      <% if (req.query.success === 'setupvps') { %>
+        <div class="alert" style="background-color:yellow;">
+          <span class="text-gray-800">Setting your VPS Up. Can Take a few minutes</span>
+      </div>
+      <% } %>
+      <% if (req.query.err === 'outofstock') { %>
+        <div class="alert" style="background-color: red;">
+          <span class="text-gray-300">Out Of Stock</span>
       </div>
       <% } %>
       </div>
@@ -91,8 +106,56 @@
               <div class="d-flex justify-content-between">
                 <h6 class="mb-2 text-blue-400">Your Projects</h6>
                 <% if (has_project) { %>
-                  <p class="text-blue-400 mb-2 text-bold">You have 1/1 project</p>
-                <% } else { %>                
+                  <% if (has_vps) { %>
+                  <% }
+                  else { %>
+                    <div>
+                      <!-- Button trigger modal -->
+                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"> Create VPS </button>
+                      <!-- Modal -->
+                      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="createVPS" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content border-0 text-blue-100">
+                            <div class="modal-header bg-gray-800 border-0">
+                              <h1 class="modal-title fs-5 text-blue-100" id="ModalLabel">Create a VPS!</h1>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body bg-gray-800 border-0">
+                              <form action="/createVPS" method="POST">
+                                <div class="mb-3">
+                                  <label for="ProjectContainerName1" class="form-label text-info">VPS Name:</label>
+                                  <input type="text" class="form-control" name="inputVPSName1" aria-describedby="vpsHelp" pattern="[A-Za-z]+" placeholder="VPS Name" required>
+                                  <div id="vpsHelp" class="form-text text-secondary">Use Letters only without spaces and special characters.</div>
+                                </div>   
+                                <div class="mb-3">
+                                  <label for="ProjectContainerName1" class="form-label text-info">VPS Password:</label>
+                                  <input type="password" class="form-control" name="inputVPSPass1" aria-describedby="vpsHelp" pattern="[A-Za-z]+" placeholder="VPS Password" required>
+                                  <div id="vpsHelp" class="form-text text-secondary">Use Letters only without spaces and special characters.</div>
+                                </div>                          
+                                <div class="mb-3">
+                                  <label for="inputOs1" class="form-label text-info">VPS OS:</label>
+                                  <select class="form-select" name="inputOs1" aria-label="OS Select" required>
+                                    <option value="" selected disabled>Choose a OS</option>
+                                    <option value="Debian">Debian 11</option>
+            
+                                  </select>
+                                </div>                            
+                                <div class="mb-3 form-check">
+                                  <input type="checkbox" class="form-check-input" id="rulesCheck1" required>
+                                  <label class="form-check-label text-info" for="rulesCheck1">I agree to UnknownVPS Rules and Terms Of Service.</label>
+                                </div>
+                            </div>
+                            <div class="modal-footer bg-gray-800 border-0">
+                              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                              <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                          </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <% } %>
+                <% } else { %>             
                 <div>
                   <!-- Button trigger modal -->
                   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"> Create Project </button>
@@ -157,7 +220,7 @@
                     <td>
                       <div class="text-center">
                         <p class="text-xs font-weight-bold mb-0">VPSes Owned</p>
-                        <h6 class="text-sm mb-0 text-blue-400">N/A</h6>
+                        <h6 class="text-sm mb-0 text-blue-400"><%= vps.amt %></h6>
                       </div>
                     </td>
                     <td class="align-middle text-sm">
@@ -168,8 +231,8 @@
                     </td>
                     <td class="align-middle text-sm">
                       <div class="col text-center">
-                        <p class="text-xs font-weight-bold mb-0">Active Time</p>
-                        <h6 class="text-sm mb-0 text-blue-400">N/A</h6>
+                        <p class="text-xs font-weight-bold mb-0"></p>
+                        <a href="/manage" class="text-sm mb-0 text-blue-400 btn rounded-lg shadow-lg <%= has_vps === true ? 'btn-primary' : '' %><%= has_vps === false ? 'disabled' : '' %>">Manage</h6>
                     </td>
                   </tr>
                 </tbody>
@@ -247,6 +310,7 @@
             </div>
           </div>
         </div>
+        
         <div class="col-lg-5 my-4 mx-auto">
           <div>
             <div class="mx-auto">
