@@ -11,7 +11,6 @@ app.set("view engine", "ejs");
 const request = require('request');
 const fs = require('fs');
 
-
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 app.use('/views', express.static(path.join(__dirname, 'views')));
 
@@ -578,28 +577,6 @@ MongoClient.connect(uri, {
                     return res.send("An error occurred");
                 }
 
-                let coinsEarned = 0;
-
-                // Update the user's coins in the database every minute
-                setInterval(() => {
-                    client
-                        .db("test")
-                        .collection("users")
-                        .findOneAndUpdate({
-                                discord_id: req.user.id
-                            }, {
-                                $inc: {
-                                    coins: 1
-                                }
-                            }, {
-                                returnOriginal: false
-                            },
-                            (err, result) => {
-                                if (err) throw err;
-                                coinsEarned++;
-                            }
-                        );
-                }, 60000);
                 res.render("earn/mine", {
                     user: req.user,
                     avatarURL,
@@ -607,8 +584,29 @@ MongoClient.connect(uri, {
                     pageName: "Mine",
                 });
             });
+            });
+    app.get("/startmining", ensureAuthenticated, (req, res) => {
+        var intervalId;
+let coinsEarned = 0;
 
-
+        // Update the user's coins in the database every minute
+        client
+        .db("test")
+        .collection("users")
+        .findOneAndUpdate({
+                discord_id: req.user.id
+            }, {
+                $inc: {
+                    coins: 1
+                }
+            }, {
+                returnOriginal: false
+            },
+            (err, result) => {
+                if (err) throw err;
+                coinsEarned++;
+            }
+        );
     });
     // Logout Starts
     app.get("/logout", function(req, res, next) {

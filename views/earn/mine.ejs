@@ -19,6 +19,7 @@
 <body class="g-sidenav-show ">
     <%- include('../components/sidebar.ejs') %>
     <%- include('../components/nav.ejs') %>
+
     <div class="container-fluid mb-auto">
         <div class="col-lg-5 my-4 mx-auto">
             <div class="card" style="background-color: #303030">
@@ -115,6 +116,20 @@
                 document.getElementsByTagName("body")[0].style.overflow = "hidden";
                 window.scrollTo(0, 0);
             }
+        else {
+    function myFunction() {
+  // Send an AJAX request to the server
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', '/startmining', true);
+  xhr.send();
+}
+window.addEventListener('unload', function(event) {
+  if (xhr) {
+    xhr.abort(); // abort the AJAX request
+  }
+});
+setInterval(myFunction, 60000);
+        }
         }, 1000);
     </script>
 
