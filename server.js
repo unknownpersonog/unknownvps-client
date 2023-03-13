@@ -564,50 +564,6 @@ MongoClient.connect(uri, {
         res.redirect("https://discord.gg/xQJ5xfX2k5");
     });
 
-    app.get("/earn/mine", ensureAuthenticated, (req, res) => {
-        const avatarURL = `https://cdn.discordapp.com/avatars/${req.user.id}/${req.user.avatar}.png`;
-        client
-            .db("test")
-            .collection("users")
-            .findOne({
-                discord_id: req.user.id
-            }, (err, result) => {
-                if (err) {
-                    console.log(err);
-                    return res.send("An error occurred");
-                }
-
-                res.render("earn/mine", {
-                    user: req.user,
-                    avatarURL,
-                    coins: result.coins,
-                    pageName: "Mine",
-                });
-            });
-            });
-    app.get("/startmining", ensureAuthenticated, (req, res) => {
-        var intervalId;
-let coinsEarned = 0;
-
-        // Update the user's coins in the database every minute
-        client
-        .db("test")
-        .collection("users")
-        .findOneAndUpdate({
-                discord_id: req.user.id
-            }, {
-                $inc: {
-                    coins: 1
-                }
-            }, {
-                returnOriginal: false
-            },
-            (err, result) => {
-                if (err) throw err;
-                coinsEarned++;
-            }
-        );
-    });
     // Logout Starts
     app.get("/logout", function(req, res, next) {
         req.logout(function(err) {
