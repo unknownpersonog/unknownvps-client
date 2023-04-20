@@ -1,3 +1,5 @@
+console.log("Initializing Unknown-VPSClient...")
+
 const express = require("express");
 const session = require("express-session");
 const app = express();
@@ -10,6 +12,7 @@ const bodyParser = require('body-parser');
 app.set("view engine", "ejs");
 const request = require('request');
 const fs = require('fs');
+const chalk = require('chalk');
 
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 app.use('/views', express.static(path.join(__dirname, 'views')));
@@ -54,6 +57,8 @@ function ensureAuthenticated(req, res, next) {
 
 app.get("/login", passport.authenticate("discord"));
 
+console.log(chalk.yellow("Trying to connect to MongoDB Database..."));
+
 const mongodb = require("mongodb-legacy");
 const MongoClient = mongodb.MongoClient;
 
@@ -63,9 +68,9 @@ MongoClient.connect(uri, {
     useNewUrlParser: true
 }, (err, client) => {
     if (err) throw err;
-    console.log("Connected to MongoDB Database successfully!");
-    const db = client.db("test");
-    const usersCollection = db.collection("users");
+    console.log(chalk.green("Connected to MongoDB Database successfully!"));
+    const db = client.db(process.env.DB_NAME);
+    const usersCollection = db.collection(process.env.DB_COLL);
 
     app.get("/", (req, res) => {
         if (req.isAuthenticated()) {
@@ -97,7 +102,7 @@ MongoClient.connect(uri, {
                         },
                         (err, result) => {
                             if (err) throw err;
-                            console.log("User " + req.user.id + " information updated successfully");
+                            console.log(chalk.blue("User " + req.user.id + " (" + req.user.username + "#" + req.user.discriminator + ") logged in"));
                         }
                     );
                 } else {
@@ -123,7 +128,7 @@ MongoClient.connect(uri, {
                         },
                         (err, result) => {
                             if (err) throw err;
-                            console.log("User " + req.user.id + " inserted into database");
+                            console.log(chalk.blue("User " + req.user.id + " (" + req.user.username + "#" + req.user.discriminator + ") has been registered"));
                         }
                     );
                 }
@@ -137,8 +142,8 @@ MongoClient.connect(uri, {
     app.get("/dashboard", ensureAuthenticated, function(req, res) {
         const avatarURL = `https://cdn.discordapp.com/avatars/${req.user.id}/${req.user.avatar}.png`;
         client
-            .db("test")
-            .collection("users")
+            .db(process.env.DB_NAME)
+            .collection(process.env.DB_COLL)
             .findOne({
                 discord_id: req.user.id
             }, (err, result) => {
@@ -195,8 +200,8 @@ MongoClient.connect(uri, {
     app.get("/earn", ensureAuthenticated, function(req, res) {
         const avatarURL = `https://cdn.discordapp.com/avatars/${req.user.id}/${req.user.avatar}.png`;
         client
-            .db("test")
-            .collection("users")
+            .db(process.env.DB_NAME)
+            .collection(process.env.DB_COLL)
             .findOne({
                 discord_id: req.user.id
             }, (err, result) => {
@@ -215,8 +220,8 @@ MongoClient.connect(uri, {
     app.get("/store", ensureAuthenticated, function(req, res) {
         const avatarURL = `https://cdn.discordapp.com/avatars/${req.user.id}/${req.user.avatar}.png`;
         client
-            .db("test")
-            .collection("users")
+            .db(process.env.DB_NAME)
+            .collection(process.env.DB_COLL)
             .findOne({
                 discord_id: req.user.id
             }, (err, result) => {
@@ -236,8 +241,8 @@ MongoClient.connect(uri, {
     app.get("/profile", ensureAuthenticated, function(req, res) {
         const avatarURL = `https://cdn.discordapp.com/avatars/${req.user.id}/${req.user.avatar}.png`;
         client
-            .db("test")
-            .collection("users")
+            .db(process.env.DB_NAME)
+            .collection(process.env.DB_COLL)
             .findOne({
                 discord_id: req.user.id
             }, (err, result) => {
@@ -292,7 +297,7 @@ MongoClient.connect(uri, {
                         console.error(err);
                         return res.status(500).send('Internal server error');
                     }
-                    console.log("Project Creation Success");
+                    console.log(chalk.green("Project created for user " + req.user.id + " (" + req.user.username + "#" + req.user.discriminator + ")"));
                     return res.redirect("/dashboard?success=projectsuccess");
                 });
         });
@@ -320,11 +325,11 @@ MongoClient.connect(uri, {
             return res.status(400).send('Bad request');
         }
         // Get the collection for storing container count
-        const containerCountCollection = client.db("test").collection('containerCount');
+        const containerCountCollection = client.db(process.env.DB_NAME).collection('containerCount');
         containerCountCollection.countDocuments({}, function(err, count) {
             if (err) throw err;
             if (count < 6) {
-                const db = client.db("test");
+                const db = client.db(process.env.DB_NAME);
 
                 // Select the collection to store allocated ports
                 const pocollection = db.collection('data');
@@ -348,7 +353,7 @@ MongoClient.connect(uri, {
                     });
                     // Allocate a new port for the next container
                     // Select the database
-                    const cocollection = client.db("test").collection('containers');
+                    const cocollection = client.db(process.env.DB_NAME).collection('containers');
 
                     // Fetch the last allocated container ID
                     cocollection.findOne({}, {
@@ -373,7 +378,7 @@ MongoClient.connect(uri, {
                             console.log(`Next port: ${nextPort}`);
 
                             const options = {
-                                url: 'https://94.23.116.182:3850/1.0/containers',
+                                url: `https://${process.env.SERVER_IP}:${process.env.SERVER_LXC_PORT}/1.0/containers`,
                                 rejectUnauthorized: false,
                                 cert: fs.readFileSync('cert.pem'),
                                 key: fs.readFileSync('key.pem'),
@@ -421,7 +426,7 @@ MongoClient.connect(uri, {
 
                                 const sshConfig = {
                                     host: process.env.SERVER_IP,
-                                    port: process.env.SERVER_PORT,
+                                    port: process.env.SERVER_SSH_PORT,
                                     username: process.env.SERVER_USER,
                                     password: process.env.SERVER_PASS
                                 };
@@ -512,7 +517,7 @@ MongoClient.connect(uri, {
                 }, function(err, result) {
                     if (err) throw err;
 
-                    console.log(`Created a new container. Total count: ${count + 1}`);
+                    console.log(chalk.green(`Created a new container for ${req.user.id} (${req.user.username}#${req.user.discriminator}). Total count: ${count + 1}`));
                     setTimeout(function() {
                         // Redirect to another page after 15 seconds
                         res.redirect('/dashboard?success=setupvps');
@@ -530,8 +535,8 @@ MongoClient.connect(uri, {
     app.get("/manage", ensureAuthenticated, (req, res) => {
         const avatarURL = `https://cdn.discordapp.com/avatars/${req.user.id}/${req.user.avatar}.png`;
         client
-            .db("test")
-            .collection("users")
+            .db(process.env.DB_NAME)
+            .collection(process.env.DB_COLL)
             .findOne({
                 discord_id: req.user.id
             }, (err, result) => {
@@ -582,6 +587,6 @@ MongoClient.connect(uri, {
     });
 
     app.listen(3000, () => {
-        console.log(`UnknownVPS Client is successfully running on port 3000`);
+        console.log(chalk.green`Unknown-VPSClient is now initialized and successfully running on port ${process.env.port}`);
     });
 });
