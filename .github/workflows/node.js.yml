@@ -1,0 +1,48 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x]
+    
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js
+      uses: actions/setup-node@v2
+      with:
+          node-version: ${{ matrix.node-version }}
+    - name: Install Dependencies
+      run: |
+        npm i
+    - name: Build and Run App
+      env:
+        CLIENT_ID: ${{ secrets.CLIENT_ID }}
+        CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+        CLIENT_REDIRECT_URI: ${{ secrets.CLIENT_REDIRECT_URI }}
+        DB_URI: ${{ secrets.DB_URI }}
+      run: |
+        npm run build
+        npm start &
+    - name: Wait for Server
+      timeout-minutes: 5
+      run: |
+        start=$(date +%s)
+        while ! nc -z localhost 3000; do
+          now=$(date +%s)
+          elapsed=$(expr $now - $start)
+          if [ $elapsed -gt 300 ]; then
+            echo "Server did not start in 5 minutes, exiting..."
+            exit 1
+          fi
+          sleep 1
+        done
