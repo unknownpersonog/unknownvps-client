@@ -24,3 +24,8 @@ jobs:
       - run: npm i
       - run: npm run build --if-present
       - run: npm start
+      - env:
+            ${{secrets.CLIENT_ID}}
+            ${{secrets.CLIENT_SECRET}}
+            ${{secrets.CLIENT_REDIRECT_URI}}
+      
