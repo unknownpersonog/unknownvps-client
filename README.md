@@ -1,6 +1,6 @@
 # Unknown VPS
 
-UnknownVPS is a project run by UnknownGamer & associates to give out free vpses to everyone for doing task. It can help both the team and the customer. This project is under closed beta as 17th Jan 2023
+UnknownVPS is a project run by UnknownGamer & associates to give out free vpses to everyone for doing task. It can help both the team and the customer.
 
 [Website](https://www.fogsmp.ml) is our simple website coded in basic html and available in [repository](https://github.com/unknownpersonog/unknownpersonog.github.io/).
 
@@ -26,8 +26,7 @@ UnknownVPS is a project run by UnknownGamer & associates to give out free vpses 
 You are allowed to use this as long as your do not use this for "illegal" purpose.
 We cannot force you but please keep the UnknownVPS trademark on the footer
 
-## Installing and using...
-## All steps are a must
+## Installing and using... (All steps are a must)
 Download all dependencies using `npm i` and ensure if all dependencies are installed
 
 Go to env.example, copy it and paste it a new file called .env
