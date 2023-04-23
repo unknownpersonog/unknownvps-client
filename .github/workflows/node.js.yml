@@ -11,22 +11,24 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    container:
-      image: node:16
-
     steps:
     - uses: actions/checkout@v2
+    - name: Use Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
     - name: Install Dependencies
       run: |
-        npm install
-    - name: Build App
+        npm i
+    - name: Build and Run App
+      env:
+        CLIENT_ID: ${{ secrets.CLIENT_ID }}
+        CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+        CLIENT_REDIRECT_URI: ${{ secrets.CLIENT_REDIRECT_URI }}
+        DB_URI: ${{ secrets.DB_URI }}
       run: |
         npm run build
-    - name: Start Server
-      env:
-        ENV_VAR_1: ${{ secrets.ENV_VAR_1 }}
-        ENV_VAR_2: ${{ secrets.ENV_VAR_2 }}
-      run: npm start --background
+        npm start
     - name: Wait for Server
       timeout-minutes: 5
       run: |
@@ -39,4 +41,4 @@ jobs:
             exit 1
           fi
           sleep 1
-        done && echo "Server Started"
+        done
