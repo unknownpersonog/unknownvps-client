@@ -25,6 +25,7 @@ jobs:
         CLIENT_ID: ${{ secrets.CLIENT_ID }}
         CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
         CLIENT_REDIRECT_URI: ${{ secrets.CLIENT_REDIRECT_URI }}
+        DB_URI: ${{ secrets.DB_URI }}
       run: |
         npm run build
         npm start
