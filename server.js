@@ -586,7 +586,7 @@ MongoClient.connect(uri, {
         });
     });
 
-    app.listen(3000, () => {
+    app.listen(process.env.port, () => {
         console.log(chalk.green`Unknown-VPSClient is now initialized and successfully running on port ${process.env.port}`);
     });
 });
