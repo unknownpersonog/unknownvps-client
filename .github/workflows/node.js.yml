@@ -30,6 +30,14 @@ jobs:
         CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
         CLIENT_REDIRECT_URI: ${{ secrets.CLIENT_REDIRECT_URI }}
         DB_URI: ${{ secrets.DB_URI }}
+        PORT: ${{ secrets.PORT }}
+        DB_NAME: ${{ secrets.DB_NAME }}
+        DB_COLL: ${{ secrets.DB_COLL }}
+        SERVER_IP: ${{ secrets.SERVER_IP }}
+        SERVER_SSH_PORT: ${{ secrets.SERVER_SSH_PORT }}
+        SERVER_LXC_PORT: ${{ secrets.SERVER_LXC_PORT }}
+        SERVER_USER: ${{ secrets.SERVER_USER }}
+        SERVER_PASS: ${{ secrets.PASS }}
       run: |
         npm run build
         npm start &
