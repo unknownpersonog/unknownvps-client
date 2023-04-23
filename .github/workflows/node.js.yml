@@ -28,7 +28,7 @@ jobs:
         DB_URI: ${{ secrets.DB_URI }}
       run: |
         npm run build
-        npm start --background
+        npm start &
     - name: Wait for Server
       timeout-minutes: 5
       run: |
