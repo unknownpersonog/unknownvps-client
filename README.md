@@ -1,4 +1,4 @@
-# Unknown VPS
+# Unknown VPS ![NodeJS Status](https://github.com/unknownpersonog/unknownvps-client/actions/workflows/node.js.yml/badge.svg?branch=main)
 
 UnknownVPS is a project run by UnknownGamer & associates to give out free vpses to everyone for doing task. It can help both the team and the customer.
 
