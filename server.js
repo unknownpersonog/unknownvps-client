@@ -80,11 +80,15 @@ MongoClient.connect(uri, {
         }
     });
 
-    app.get(
-        "/login/callback",
-        passport.authenticate("discord", {
-            failureRedirect: "/login"
-        }),
+    const passportErrorHandler = (err, req, res, next) => {
+	console.error(`Passport error: ${err.message}`);
+	res.status(500).render("errorlogin");
+};
+    
+app.get(
+  "/login/callback",
+  passport.authenticate("discord", { failureRedirect: "/login" }),
+  passportErrorHandler,
         function(req, res) {
             usersCollection.findOne({
                 discord_id: req.user.id
@@ -328,7 +332,7 @@ MongoClient.connect(uri, {
         const containerCountCollection = client.db(process.env.DB_NAME).collection('containerCount');
         containerCountCollection.countDocuments({}, function(err, count) {
             if (err) throw err;
-            if (count < 6) {
+            if (count < 3) {
                 const db = client.db(process.env.DB_NAME);
 
                 // Select the collection to store allocated ports
