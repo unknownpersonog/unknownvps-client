@@ -1,45 +1,140 @@
-# Unknown VPS ![NodeJS Status](https://github.com/unknownpersonog/unknownvps-client/actions/workflows/node.js.yml/badge.svg?branch=main)
 
-UnknownVPS is a project run by UnknownGamer & associates to give out free vpses to everyone for doing task. It can help both the team and the customer.
+# UnknownVPS Client
 
-[Website](https://www.fogsmp.ml) is our simple website coded in basic html and available in [repository](https://github.com/unknownpersonog/unknownpersonog.github.io/).
+Unknown VPS is a VPS Distribution Service. A custom made client area is used for this service. This client area uses Discord OAuth2 for handling logins and MariaDB Atlas Database for user storage. User's information is stored using user's  discord id.
 
-[Client Area](https://client.fogsmp.ml/) the point this repository is about. Currently uses Discord login functionality.
+### Who should use?
+One who wants a unique solution for his projects. Mainly Game Servers and VPS/VDS.
 
 
-## What's in this project?
-1] views -> Contains the HTMLs for the webpages.
+ 
+## Acknowledgements
 
-2] LICENSE -> Permitted use of this repo.
+ - Thanks to [ChatGPT](https://chat.openai.com) for some code in the project
 
-3] package.json -> Node.js packages file.
+## Authors
 
-4] README.md -> Details for REPO
+- [@unknownpersonog](https://www.github.com/unknownpersonog) - Owner and Maintainer of the repository
 
-5] server.js -> The main server
 
-6] env.example -> Basic env structure
+## Badges
 
-7] .gitignore -> Files to be ignored
+[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
+[![AGPL License](https://img.shields.io/github/actions/workflow/status/unknownpersonog/unknownvps-client/node.js.yml)](https://github.com/unknownpersonog/unknownvps-client/actions/workflows/node.js.yml)
 
-## Using this for your own use
-You are allowed to use this as long as your do not use this for "illegal" purpose.
-We cannot force you but please keep the UnknownVPS trademark on the footer
 
-## Installing and using... (All steps are a must)
-Download all dependencies using `npm i` and ensure if all dependencies are installed
+## Screenshots
+#### Login Page
+![Login Page](https://i.ibb.co/cJVVNNr/unknownvps-login.png)
 
-Go to env.example, copy it and paste it a new file called .env
+#### Dashboard Page
+![Dashboard Page](https://i.ibb.co/WzcdR0D/unknownvps-dash.png)
+## Features
 
-If you do not have Discord OAuth2 setup yet, check a video on youtube and set it up first
+- Dark Themed
+- Database Storage
+- Attractive Design
+- Coin System
+- Easy to understand User Interface
+- Discord OAuth2
 
-Fill in the required data. We are currently using SSH package due to LXC API limitations. Please use root user or feel free to modify the project and do a pull request.
-The file is self-explanatory
+## Deployment
 
-Now, execute `npm run start` or `node server.js`
+To deploy this project on your trusted infrastructure, use the following steps: 
 
-Once everything is running, close the process using Ctrl+C.
+- Step 1: Install the required dependencies 
+    ```bash
+      npm i
+    ```
 
-Head over to views folder and modify the brandings (avoid footer).
+---
 
-Start the server again using `npm run start` or `node server.js`
+- Step 2: Copy env.example to .env
+    ```bash
+      cp env.example .env
+    ```
+---
+- Step 3: Go to [Discord Dev Portal](https://discord.com/developers/applications)
+
+- 3.1: Click on `New Application`
+- 3.2: Name your OAuth Application and agree to Discord Terms of Service
+- 3.3: Click on OAuth and Copy **Client ID** and **Client Secret**
+- 3.4: In redirects add your domain in the  following farm
+    ``https://<your domain>/login/callback`` (use http if you do not have ssl yet)
+---
+- Step 4: Fill the .env with required details (You can use env.example for reference)
+
+---
+
+- Step 5: Run the following command to start the server
+    ```bash
+    npm run start
+    ```
+
+---
+
+- Step 6 (Optional): Go to the views folder and modify the brandings but **keep our credits in footbar**
+
+
+
+
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`CLIENT_ID`: Obtained using Discord OAuth2
+
+`CLIENT_REDIRECT_URI`: Redirect URI Defined in Discord OAuth2
+
+`CLIENT_SECRET`: Obtained using Discord OAuth2
+
+`DB_URI`: MongoDB Database URI to access and edit the DB
+
+`PORT`: Port to start the Client on.
+
+`SERVER_IP`: IP on which servers are to be created
+
+`SERVER_PASS`: Pass to ssh on the server (ROOT  user required)
+
+`SERVER_LXC_PORT`: Port for LXD API
+
+`SERVER_SSH_PORT`: Port for SSH
+
+`SERVER_USER`: root (Leave unchanged unless you know what this is)
+
+`DB_NAME`: Name of the Database
+
+`DB_COLL`: Collection to store user information
+
+
+## FAQ
+
+#### I do not want to use root user. What should I do?
+
+Answer: Root user is used to execute direct commands on the server to setup the container. You can replace this user if you add `sudo` before all the commands. Generally this should return an error. We will try to shift to a application based container creation
+
+#### I am getting error Cannot find module some_module. What is the fix for this?
+
+Answer: Ensure you followed steps correctly
+
+#### My MongoDB connection is failing?
+
+Answer: If you are using the correct URI then ensure your net connectivity.
+
+
+## Future Plans
+- Optimizing the VPS Creation System. It is known to have many bugs.
+
+- Creating a custom application to handle requests made from client to ensure safety of data transfer.
+
+- Adding more login options
+
+
+## Support
+
+Support is available on our [Discord](https://discord.gg/xQJ5xfX2k5) but please ensure that the support is just volunteers and no "real" support team is there.
+
+ If you have any issues that all users have please report them in GitHub Issues.
+
+### That's all for the README. Please leave a star to support us. Thank You
+
