@@ -1,4 +1,6 @@
 #!/bin/bash
+
+setup() {
 hostnamectl set-hostname ${vpsName}
 echo -e \'${vpsPassword}\n${vpsPassword}\' | passwd root
 apt-get update,
@@ -8,3 +10,10 @@ curl -Lo /etc/ssh/sshd_config https://raw.githubusercontent.com/dxomg/sshd_confi
 systemctl restart ssh
 systemctl restart sshd
 reboot
+}
+
+main() {
+vpsName="$1"
+vpsPassword="$2"
+setup
+}
