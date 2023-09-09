@@ -1,4 +1,6 @@
-
+## THIS REPOSITORY HAS BEEN DEPRECATED
+## SHIFT TO [UnknownVPS API](https://github.com/unknownpersonog/unknownvps-api)
+## No Support will be provided for this repository.
 # UnknownVPS Client
 
 Unknown VPS is a VPS Distribution Service. A custom made client area is used for this service. This client area uses Discord OAuth2 for handling logins and MariaDB Atlas Database for user storage. User's information is stored using user's  discord id.
